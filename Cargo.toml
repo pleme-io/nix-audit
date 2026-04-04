@@ -1,0 +1,28 @@
+[package]
+name = "nix-audit"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.89.0"
+license = "MIT"
+description = "Convergent Nix flake efficiency auditor — scan, fix, verify, converge"
+repository = "https://github.com/pleme-io/nix-audit"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+walkdir = "2"
+regex = "1"
+colored = "2"
+anyhow = "1"
+chrono = { version = "0.4", features = ["serde"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+strip = true
+
+[lints.clippy]
+pedantic = "warn"
